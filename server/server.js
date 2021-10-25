@@ -11,7 +11,7 @@ const database = {
     {
       id: '123',
       name: 'Andrei',
-      email: 'mail@gmail.com',
+      email: 'test@test.com',
       password: 'cookies',
       entries: 0,
       joined: new Date(),
@@ -67,7 +67,6 @@ app.post('/register', (req, res) => {
     id: '125',
     name: name,
     email: email,
-    password: password,
     entries: 0,
     joined: new Date(),
   });
