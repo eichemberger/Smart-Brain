@@ -1,0 +1,22 @@
+{
+  "name": "facerecognitionbrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "start": "npm run client & npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eichemberger/Smart-Brain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eichemberger/Smart-Brain/issues"
+  },
+  "homepage": "https://github.com/eichemberger/Smart-Brain#readme"
+}
