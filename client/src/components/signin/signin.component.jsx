@@ -1,5 +1,4 @@
 import React from 'react';
-import './signin.styles.css';
 
 class SignIn extends React.Component {
   constructor() {
@@ -29,8 +28,7 @@ class SignIn extends React.Component {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user);
-        if (user) {
+        if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
