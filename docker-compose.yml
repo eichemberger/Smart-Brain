@@ -7,31 +7,30 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - backend
-      - frontend
+      - mi_net
     depends_on:
       - smart-brain-api
+    labels:
+      - version=1.0.0
 
   smart-brain-api:
     container_name: smart-brain-api
     build: ./server
-    # command: npm start
     working_dir: /usr/src/app
     environment:
       POSTGRES_USER: german
       POSTGRES_PASSWORD: secreto
       POSTGRES_DB: smart-brain
-      POSTGRES_HOST: postgres
+      POSTGRES_HOST: db
     networks:
-      - backend
-    ports:
-      - "8000:8000"
+      - mi_net
     depends_on:
       - postgres
+    ports:
+      - "8000:8000"
 
-  # Postgres
-  postgres:
-    container_name: postgres
+  db:
+    container_name: db
     build: ./postgres
     environment:
       POSTGRES_USER: german
@@ -40,8 +39,8 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - backend
+      - mi_net
 
 networks:
-  backend:
-  frontend:
+  mi_net:
+    driver: bridge

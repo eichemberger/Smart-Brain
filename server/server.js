@@ -19,12 +19,6 @@ const db = knex({
   },
 });
 
-// connection: {
-//   host: "db",
-//   user: "root",
-//   password: "root",
-//   database: "smart-brain",
-
 const app = express();
 app.use(morgan("combined"));
 const PORT = 8000;
