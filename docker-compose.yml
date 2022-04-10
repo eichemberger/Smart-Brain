@@ -1,0 +1,47 @@
+version: "3.10"
+
+services:
+  app-react:
+    build: ./client
+    working_dir: /usr/src/front
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - smart-brain-api
+
+  smart-brain-api:
+    container_name: smart-brain-api
+    build: ./server
+    # command: npm start
+    working_dir: /usr/src/app
+    environment:
+      POSTGRES_USER: german
+      POSTGRES_PASSWORD: secreto
+      POSTGRES_DB: smart-brain
+      POSTGRES_HOST: postgres
+    networks:
+      - backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  # Postgres
+  postgres:
+    container_name: postgres
+    build: ./postgres
+    environment:
+      POSTGRES_USER: german
+      POSTGRES_PASSWORD: secreto
+      POSTGRES_DB: smart-brain
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+networks:
+  backend:
+  frontend:
